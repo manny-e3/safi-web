@@ -1,0 +1,1664 @@
+/* ==========================================================================
+   SAFI Core Experience Styles - Aligned with Nova Architecture
+   Color Palette:
+   - Primary Accent: #10B981 (Emerald Green)
+   - Accent Hover: #059669
+   - Spend Pool / Allocation: #0047FF (Royal Blue)
+   - Reserve / Protected: #10B981 (Emerald Green)
+   - Background Modal: #081426 (Deep Midnight Navy)
+   - Dark Card: #17181C
+   - Dark Card Border: #2E3039
+   - Text Primary: #FFFFFF
+   - Text Muted: #9CA3AF / #8F929C
+   - Warning/Alert: #EF4444 (Red) / #F59E0B (Amber)
+   ========================================================================== */
+
+.safi-overlay-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 16px;
+  animation: safiFadeIn 0.25s ease-out;
+}
+
+@keyframes safiFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.safi-modal-card {
+  width: 100%;
+  max-width: 680px;
+  height: 92vh;
+  max-height: 900px;
+  background-color: #081426;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 40px rgba(16, 185, 129, 0.1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  color: #FFFFFF;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Header */
+.safi-widget-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background-color: #081426;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  flex-shrink: 0;
+}
+
+.safi-header-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.safi-header-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #10B981;
+}
+
+.safi-header-btn:disabled,
+.safi-header-btn.hidden {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.safi-header-title-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.safi-header-brand {
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.safi-header-brand-badge {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10B981;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 6px;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.safi-header-via {
+  font-size: 10px;
+  color: #9CA3AF;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-top: 2px;
+}
+
+/* Progress Bar */
+.safi-progress-track {
+  width: 100%;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.06);
+  flex-shrink: 0;
+  position: relative;
+}
+
+.safi-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #10B981, #34D399);
+  transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
+}
+
+/* Body Scroll Content */
+.safi-screen-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.safi-screen-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.safi-screen-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.safi-screen-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+/* Footer & Buttons */
+.safi-widget-footer {
+  padding: 20px 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  background-color: #081426;
+  flex-shrink: 0;
+}
+
+.safi-btn-primary {
+  width: 100%;
+  height: 52px;
+  border-radius: 12px;
+  background: #10B981;
+  color: #FFFFFF;
+  font-size: 15px;
+  font-weight: 700;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+}
+
+.safi-btn-primary:hover:not(:disabled) {
+  background: #059669;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+}
+
+.safi-btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Tab Bar */
+.safi-widget-tab-bar {
+  display: flex;
+  height: 64px;
+  background-color: #081426;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  align-items: center;
+  justify-content: space-around;
+  flex-shrink: 0;
+}
+
+.safi-tab-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background: none;
+  border: none;
+  color: #8F929C;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  gap: 4px;
+}
+
+.safi-tab-item:hover {
+  color: #FFFFFF;
+}
+
+.safi-tab-item.active {
+  color: #10B981;
+  font-weight: 700;
+}
+
+.safi-tab-item.active svg {
+  stroke: #10B981;
+}
+
+/* Typography */
+.safi-serif-title {
+  font-family: 'Georgia', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1.25;
+  margin-bottom: 12px;
+}
+
+.safi-serif-title .italic-green {
+  font-style: italic;
+  font-weight: 400;
+  color: #10B981;
+}
+
+.safi-screen-subtitle {
+  font-size: 14px;
+  color: #9CA3AF;
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+/* Onboarding Screen 1: Welcome */
+.safi-visual-boxes-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 24px 0 32px 0;
+}
+
+.safi-visual-box-allocated {
+  flex: 1;
+  background-color: rgba(59, 130, 246, 0.1);
+  border: 1.5px solid #3B82F6;
+  border-radius: 14px;
+  padding: 20px 14px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+}
+
+.safi-visual-box-protected {
+  flex: 1;
+  background-color: rgba(16, 185, 129, 0.1);
+  border: 1.5px solid #10B981;
+  border-radius: 14px;
+  padding: 20px 14px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
+}
+
+.safi-visual-box-value {
+  font-size: 17px;
+  font-weight: 800;
+  color: #FFFFFF;
+}
+
+.safi-visual-box-subtext {
+  font-size: 11px;
+  color: #9CA3AF;
+  margin-top: 6px;
+  line-height: 1.4;
+}
+
+.safi-visual-box-plus {
+  font-size: 22px;
+  font-weight: 700;
+  color: #9CA3AF;
+}
+
+.safi-reassurance-box {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-radius: 12px;
+  padding: 14px 18px;
+  text-align: center;
+  color: #A7F3D0;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: auto;
+  margin-bottom: 12px;
+}
+
+/* Onboarding Screen 2: Frequency */
+.safi-grid-2x2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.safi-option-card-btn {
+  height: 72px;
+  background-color: #17181C;
+  border-radius: 14px;
+  border: 1.5px solid #2E3039;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: #8F929C;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.safi-option-card-btn:hover {
+  border-color: rgba(16, 185, 129, 0.4);
+  color: #FFFFFF;
+}
+
+.safi-option-card-btn.active {
+  border-color: #10B981;
+  background-color: rgba(16, 185, 129, 0.08);
+  color: #10B981;
+  box-shadow: 0 0 16px rgba(16, 185, 129, 0.15);
+}
+
+.safi-custom-days-wrapper {
+  background-color: #17181C;
+  border: 1.5px solid #2E3039;
+  border-radius: 14px;
+  padding: 16px;
+  margin-top: 10px;
+}
+
+.safi-custom-days-label {
+  font-size: 13px;
+  color: #9CA3AF;
+  margin-bottom: 8px;
+}
+
+.safi-custom-input-box {
+  display: flex;
+  align-items: center;
+  background-color: #1F2127;
+  border: 1px solid #2E3039;
+  border-radius: 10px;
+  padding: 0 16px;
+  height: 48px;
+}
+
+.safi-custom-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: 700;
+  outline: none;
+}
+
+.safi-input-suffix {
+  color: #10B981;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* Onboarding Screen 3: Split Slider */
+.safi-split-cards-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.safi-split-card-allocated {
+  background-color: #0047FF;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 4px 16px rgba(0, 71, 255, 0.2);
+}
+
+.safi-split-card-protected {
+  background-color: rgba(16, 185, 129, 0.05);
+  border: 1.5px solid #10B981;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.1);
+}
+
+.safi-split-card-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.safi-split-card-val {
+  font-size: 20px;
+  font-weight: 800;
+  color: #FFFFFF;
+}
+
+.safi-slider-container {
+  margin: 16px 0 24px 0;
+}
+
+.safi-dual-track {
+  position: relative;
+  height: 14px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 7px;
+  cursor: pointer;
+  overflow: visible;
+  margin: 14px 0;
+}
+
+.safi-track-fill-blue {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background-color: #0047FF;
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
+}
+
+.safi-track-fill-green {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  background-color: #10B981;
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
+}
+
+.safi-slider-thumb {
+  position: absolute;
+  top: -7px;
+  width: 28px;
+  height: 28px;
+  border-radius: 14px;
+  background: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  cursor: grab;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.1s;
+}
+
+.safi-slider-thumb:active {
+  cursor: grabbing;
+  transform: translateX(-50%) scale(1.15);
+}
+
+.safi-slider-labels-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #9CA3AF;
+  font-weight: 500;
+}
+
+.safi-advice-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-radius: 12px;
+  padding: 14px 16px;
+  color: #10B981;
+  font-size: 13px;
+  line-height: 1.5;
+  margin-top: 8px;
+}
+
+/* Onboarding Screen 4: Mode */
+.safi-mode-card {
+  background-color: #17181C;
+  border: 1.5px solid #2E3039;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.safi-mode-card:hover {
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+.safi-mode-card.active {
+  border-color: #10B981;
+  background-color: rgba(16, 185, 129, 0.04);
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.1);
+}
+
+.safi-mode-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.safi-mode-icon-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8F929C;
+}
+
+.safi-mode-card.active .safi-mode-icon-circle {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10B981;
+}
+
+.safi-mode-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #8F929C;
+  flex: 1;
+}
+
+.safi-mode-card.active .safi-mode-title {
+  color: #FFFFFF;
+}
+
+.safi-mode-desc-list {
+  font-size: 13px;
+  color: #9CA3AF;
+  line-height: 1.6;
+  padding-left: 48px;
+}
+
+/* Onboarding Screen 5: Card Protection */
+.safi-protection-card {
+  background-color: #17181C;
+  border: 1.5px solid #2E3039;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.safi-protection-card:hover:not(.disabled) {
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+.safi-protection-card.active {
+  border-color: #10B981;
+  background-color: rgba(16, 185, 129, 0.04);
+}
+
+.safi-protection-card.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.safi-radio-circle {
+  width: 22px;
+  height: 22px;
+  border-radius: 11px;
+  border: 2px solid #4B5563;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.safi-protection-card.active .safi-radio-circle {
+  border-color: #10B981;
+}
+
+.safi-radio-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #10B981;
+}
+
+.safi-buffer-pills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.safi-buffer-pill {
+  height: 44px;
+  border-radius: 10px;
+  border: 1.5px solid #2E3039;
+  background: #1F2127;
+  color: #9CA3AF;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.safi-buffer-pill:hover {
+  border-color: #10B981;
+  color: #FFFFFF;
+}
+
+.safi-buffer-pill.active {
+  border-color: #10B981;
+  background: rgba(16, 185, 129, 0.12);
+  color: #10B981;
+}
+
+/* Onboarding Screen 6: Success */
+.safi-success-icon-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.safi-shield-badge {
+  width: 84px;
+  height: 84px;
+  border-radius: 42px;
+  border: 2px solid #10B981;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: rgba(16, 185, 129, 0.05);
+}
+
+.safi-shield-check-small {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+  background: #10B981;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.safi-card-box {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.safi-card-box-header {
+  font-size: 11px;
+  font-weight: 800;
+  color: #9CA3AF;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.safi-setup-table-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 13px;
+}
+
+.safi-setup-table-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.safi-setup-label {
+  color: #9CA3AF;
+}
+
+.safi-setup-val {
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+.safi-bullet-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-size: 13px;
+  color: #FFFFFF;
+}
+
+.safi-bullet-item:last-child {
+  margin-bottom: 0;
+}
+
+.safi-green-dot {
+  color: #10B981;
+  font-size: 18px;
+}
+
+/* ==========================================================================
+   ACTIVE DASHBOARD (Tab 1: Home)
+   ========================================================================== */
+.safi-cycle-bar-header {
+  color: #10B981;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.safi-donut-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 12px 0 20px 0;
+}
+
+.safi-donut-outer-ring {
+  width: 180px;
+  height: 180px;
+  border-radius: 90px;
+  border: 8px solid #10B981;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+}
+
+.safi-donut-inner-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.safi-donut-sub-label {
+  font-size: 10px;
+  font-weight: 800;
+  color: #9CA3AF;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.safi-donut-amount {
+  font-size: 24px;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin: 2px 0;
+}
+
+.safi-donut-avail-pill {
+  font-size: 11px;
+  font-weight: 700;
+  color: #10B981;
+  margin-top: 4px;
+}
+
+.safi-pace-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 18px;
+  margin-bottom: 16px;
+}
+
+.safi-pace-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.safi-pace-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.safi-pace-badge {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 8px;
+}
+
+.safi-pace-badge.on-track {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10B981;
+}
+
+.safi-pace-badge.warning {
+  background: rgba(245, 158, 11, 0.15);
+  color: #F59E0B;
+}
+
+.safi-pace-badge.very-well {
+  background: rgba(167, 139, 250, 0.15);
+  color: #A78BFA;
+}
+
+.safi-pace-desc {
+  font-size: 13px;
+  color: #E5E7EB;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.safi-pace-metrics-row {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 14px;
+}
+
+.safi-pace-metric-col span.lbl {
+  font-size: 11px;
+  color: #9CA3AF;
+  display: block;
+}
+
+.safi-pace-metric-col span.val {
+  font-size: 16px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-top: 3px;
+  display: block;
+}
+
+.safi-dual-tiles-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.safi-tile-box {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.safi-tile-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 800;
+  color: #9CA3AF;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.safi-tile-val {
+  font-size: 17px;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin-bottom: 4px;
+}
+
+.safi-tile-sub {
+  font-size: 11px;
+  color: #9CA3AF;
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   INSIGHTS (Tab 2)
+   ========================================================================== */
+.safi-subtabs-bar {
+  display: flex;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 4px;
+  margin-bottom: 20px;
+}
+
+.safi-subtab-btn {
+  flex: 1;
+  background: none;
+  border: none;
+  color: #9CA3AF;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.safi-subtab-btn.active {
+  background: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+}
+
+.safi-chart-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.safi-chart-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 4px;
+}
+
+.safi-trend-bars-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  height: 120px;
+  margin-top: 20px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+}
+
+.safi-trend-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 44px;
+}
+
+.safi-bars-group {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 80px;
+}
+
+.safi-bar-last-cycle {
+  width: 10px;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+
+.safi-bar-this-cycle {
+  width: 10px;
+  background-color: #10B981;
+  border-radius: 4px;
+}
+
+.safi-col-label {
+  font-size: 11px;
+  color: #9CA3AF;
+  font-weight: 600;
+}
+
+/* Categories */
+.safi-category-bar-row {
+  margin-bottom: 16px;
+}
+
+.safi-category-bar-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.safi-category-track {
+  height: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.safi-category-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
+/* Forecast */
+.safi-forecast-card {
+  background: rgba(255, 255, 255, 0.03);
+  border-left: 3.5px solid #10B981;
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 12px;
+}
+
+.safi-forecast-label {
+  font-size: 11px;
+  font-weight: 800;
+  color: #9CA3AF;
+  text-transform: uppercase;
+}
+
+.safi-forecast-val {
+  font-size: 24px;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin: 4px 0;
+}
+
+.safi-forecast-sub {
+  font-size: 12px;
+  color: #10B981;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   HISTORY (Tab 3)
+   ========================================================================== */
+.safi-history-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 18px;
+  margin-bottom: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.safi-history-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.safi-history-card.expanded {
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.safi-history-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.safi-history-month {
+  font-size: 16px;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.safi-history-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.safi-history-stat-col span.v {
+  font-size: 15px;
+  font-weight: 700;
+  color: #FFFFFF;
+  display: block;
+}
+
+.safi-history-stat-col span.l {
+  font-size: 10px;
+  color: #9CA3AF;
+  margin-top: 2px;
+  display: block;
+}
+
+.safi-history-expanded-box {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ==========================================================================
+   SETTINGS (Tab 4)
+   ========================================================================== */
+.safi-settings-profile-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 24px;
+}
+
+.safi-avatar-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+  background: rgba(16, 185, 129, 0.2);
+  color: #10B981;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.safi-settings-group-title {
+  font-size: 11px;
+  font-weight: 800;
+  color: #9CA3AF;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin: 20px 0 10px 4px;
+}
+
+.safi-settings-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.safi-settings-item {
+  display: flex;
+  align-items: center;
+  padding: 16px 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.safi-settings-item:last-child {
+  border-bottom: none;
+}
+
+.safi-settings-item:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.safi-settings-icon-wrap {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 14px;
+}
+
+.safi-settings-text {
+  flex: 1;
+}
+
+.safi-settings-item-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+.safi-settings-item-sub {
+  font-size: 11px;
+  color: #9CA3AF;
+  margin-top: 2px;
+}
+
+.safi-settings-item-value {
+  font-size: 13px;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin-right: 8px;
+}
+
+.safi-toggle-switch {
+  width: 44px;
+  height: 24px;
+  border-radius: 12px;
+  background: #374151;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.safi-toggle-switch.active {
+  background: #10B981;
+}
+
+.safi-toggle-knob {
+  width: 18px;
+  height: 18px;
+  border-radius: 9px;
+  background: #FFFFFF;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  transition: transform 0.2s;
+}
+
+.safi-toggle-switch.active .safi-toggle-knob {
+  transform: translateX(20px);
+}
+
+/* ==========================================================================
+   INTERVENTION OVERRIDE MODAL
+   ========================================================================== */
+/* ==========================================================================
+   REBUILT INTERVENTION OVERRIDE MODAL (ULTRA HIGH-CONTRAST & READABLE)
+   ========================================================================== */
+.safi-override-screen-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-family: inherit;
+  color: #0F172A;
+}
+
+.safi-override-badge-header {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #FEF2F2;
+  border: 1px solid #FECDD3;
+  color: #DC2626;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin: 0 auto 10px auto;
+}
+
+.safi-override-card {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+  border: 1.5px solid #FCA5A5;
+  box-shadow: 0 10px 25px -5px rgba(220, 38, 38, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+  border-radius: 16px;
+  padding: 16px 18px;
+  text-align: center;
+}
+
+.safi-override-icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 22px;
+  background: #FEE2E2;
+  border: 2px solid #FECDD3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 8px auto;
+}
+
+.safi-override-headline {
+  font-size: 18px;
+  font-weight: 800;
+  color: #0F172A;
+  margin: 0 0 4px 0;
+  letter-spacing: -0.3px;
+}
+
+.safi-override-subtext {
+  font-size: 12.5px;
+  color: #475569;
+  line-height: 1.45;
+  margin: 0 0 14px 0;
+}
+
+.safi-override-subtext strong {
+  color: #0F172A;
+}
+
+.safi-override-subtext .text-red-highlight {
+  color: #DC2626;
+  font-weight: 800;
+}
+
+/* Financial Breakdown Card */
+.safi-override-breakdown-card {
+  background: #FFFFFF;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 10px;
+  padding: 10px 12px;
+  text-align: left;
+  margin-bottom: 14px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+}
+
+.safi-breakdown-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid #F1F5F9;
+  font-size: 12.5px;
+}
+
+.safi-breakdown-row:last-child {
+  border-bottom: none;
+}
+
+.safi-breakdown-row.highlight-reserve {
+  background: #FFF1F2;
+  border: 1px solid #FECDD3;
+  border-radius: 6px;
+  padding: 6px 8px;
+  margin: 3px 0;
+}
+
+.breakdown-label {
+  color: #64748B;
+  font-weight: 500;
+}
+
+.breakdown-label-red {
+  color: #991B1B;
+  font-weight: 700;
+}
+
+.breakdown-value-bold {
+  color: #0F172A;
+  font-weight: 800;
+  font-size: 13.5px;
+}
+
+.breakdown-value-green {
+  color: #059669;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.breakdown-tag-green {
+  background: #ECFDF5;
+  color: #059669;
+  border: 1px solid #A7F3D0;
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+.breakdown-value-red {
+  color: #DC2626;
+  font-weight: 800;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.breakdown-tag-red {
+  background: #FEF2F2;
+  color: #DC2626;
+  border: 1px solid #FCA5A5;
+  font-size: 10.5px;
+  font-weight: 800;
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+.breakdown-value-slate {
+  color: #0F172A;
+  font-weight: 700;
+}
+
+/* Reason Section */
+.safi-reason-section {
+  text-align: left;
+  margin-bottom: 14px;
+}
+
+.safi-reason-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0F172A;
+  margin-bottom: 2px;
+}
+
+.safi-reason-subtitle {
+  font-size: 11.5px;
+  color: #64748B;
+  margin-bottom: 8px;
+}
+
+.safi-reasons-grid-modern {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.safi-reason-pill {
+  min-height: 36px;
+  background: #FFFFFF;
+  border: 1.5px solid #CBD5E1;
+  border-radius: 8px;
+  color: #334155;
+  font-size: 11.5px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 4px 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: center;
+}
+
+.safi-reason-pill:hover {
+  border-color: #94A3B8;
+  background: #F8FAFC;
+  color: #0F172A;
+}
+
+.safi-reason-pill.active {
+  border-color: #10B981;
+  background: #ECFDF5;
+  color: #065F46;
+  font-weight: 700;
+  box-shadow: 0 0 0 1px #10B981;
+}
+
+.reason-check {
+  color: #059669;
+}
+
+/* Security Friction Countdown */
+.safi-countdown-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #F8FAFC;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 14px;
+  text-align: left;
+}
+
+.safi-countdown-circle-modern {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  border: 2.5px solid #EF4444;
+  background: #FEF2F2;
+  color: #DC2626;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 800;
+  flex-shrink: 0;
+  transition: all 0.25s ease;
+}
+
+.safi-countdown-status {
+  font-size: 12px;
+  font-weight: 700;
+  color: #0F172A;
+  margin-bottom: 2px;
+}
+
+.safi-countdown-hint {
+  font-size: 11px;
+  color: #64748B;
+  line-height: 1.35;
+}
+
+/* Actions */
+.safi-override-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.safi-btn-cancel-override {
+  width: 100%;
+  height: 42px;
+  border-radius: 9px;
+  background: #FFFFFF;
+  border: 1.5px solid #CBD5E1;
+  color: #0F172A;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.safi-btn-cancel-override:hover {
+  background: #F8FAFC;
+  border-color: #94A3B8;
+}
+
+.safi-btn-approve-override {
+  width: 100%;
+  height: 44px;
+  border-radius: 9px;
+  border: none;
+  font-size: 13.5px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.safi-btn-approve-override:disabled {
+  background: #E2E8F0;
+  color: #94A3B8;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.safi-btn-approve-override:not(:disabled) {
+  background: #DC2626;
+  color: #FFFFFF;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(220, 38, 38, 0.28);
+}
+
+.safi-btn-approve-override:not(:disabled):hover {
+  background: #B91C1C;
+}
+
+/* ==========================================================================
+   SAFI MOBILE & TABLET RESPONSIVE RULES
+   ========================================================================== */
+@media (max-width: 640px) {
+  .safi-overlay-backdrop {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  .safi-modal-card {
+    max-width: 100%;
+    width: 100%;
+    height: 100vh;
+    max-height: 100vh;
+    border-radius: 0;
+    border: none;
+  }
+
+  .safi-widget-header {
+    padding: 12px 16px;
+  }
+
+  .safi-screen-content {
+    padding: 16px;
+  }
+
+  .safi-widget-footer {
+    padding: 14px 16px;
+  }
+
+  .safi-serif-title {
+    font-size: 26px;
+    line-height: 1.2;
+  }
+
+  .safi-screen-subtitle {
+    font-size: 13px;
+    margin-bottom: 18px;
+  }
+
+  .safi-override-card {
+    padding: 18px 14px;
+    border-radius: 12px;
+  }
+
+  .safi-override-headline {
+    font-size: 17px;
+  }
+
+  .safi-reasons-grid-modern {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .safi-countdown-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .safi-countdown-text-wrap {
+    text-align: center;
+  }
+}
+
+@media (max-width: 420px) {
+  .safi-serif-title {
+    font-size: 22px;
+  }
+
+  .safi-visual-boxes-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .safi-visual-box-plus {
+    display: none;
+  }
+
+  .safi-visual-box-allocated,
+  .safi-visual-box-protected {
+    width: 100%;
+    padding: 14px 10px;
+  }
+
+  .safi-grid-2x2 {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
