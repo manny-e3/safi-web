@@ -70,7 +70,7 @@ export default function LoginPage({
     <div className="auth-card">
       {/* Card Header */}
       <div className="auth-card-header">
-        <h2 className="auth-card-title">Welcome to Meridian Online Banking</h2>
+        <h2 className="auth-card-title">Welcome  Meridian Online Banking</h2>
         <p className="auth-card-subtitle">
           Please log in safely with your registered credentials.
         </p>
